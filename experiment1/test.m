@@ -1,11 +1,17 @@
 % Script to test the performances of FFT and Goertzel Algorithm
 
+function x = func1()
+    x = 1;
+end
+
 % Generate 1M samples of the tone with a sample rate of 8 MHz.
 Fs = 8000000;
 N = 1000000;
 f = [697 770 852 941 1209 1336 1477 1633];
 % Choose the indices corresponding to the frequencies.
 freq_indices = mod(round(f/Fs*N), N);
+
+a = func1();
 
 buttons = ['1', '2', '3', 'A';
 		   '4', '5', '6', 'B';
