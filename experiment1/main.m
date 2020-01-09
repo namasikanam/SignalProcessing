@@ -12,7 +12,7 @@ data = lo + hi;
 % Use the Goertzel algorithm to compute the DFT of the tone.
 % Choose the indices corresponding to the frequencies used to generate the numbers 0 through 9.
 f = [697 770 852 941 1209 1336 1477];
-freq_indices = round(f/Fs*N);
+freq_indices = mod(round(f/Fs*N), N);
 my_dft_data = my_goertzel(data,freq_indices)
 
 % The answer
@@ -20,11 +20,11 @@ dft_data = goertzel(data, freq_indices + 1)
 pavel_dft_data = pavel_goertzel(data, freq_indices)
 
 % Plot the DFT magnitude.
-% figure('Name', 'My DFT Magnitude')
-% stem(f,abs(my_dft_data))
+figure('Name', 'My DFT Magnitude')
+stem(f,abs(my_dft_data))
 
-figure('Name', 'Pavel''s DFT Magnitude')
-stem(f, abs(pavel_dft_data))
+% figure('Name', 'Pavel''s DFT Magnitude')
+% stem(f, abs(pavel_dft_data))
 
 ax = gca;
 ax.XTick = f;
